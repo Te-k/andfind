@@ -16,7 +16,7 @@ lint:
 build:
 	env GOOS=linux GOARCH=arm GOARM=7 go build -o $(BUILD_FOLDER)/andfind_arm7
 	env GOOS=linux GOARCH=arm GOARM=6 go build -o $(BUILD_FOLDER)/andfind_arm6
-	env GOOS=linux GOARCH=amd64 go build -o $(BUILD_FOLDER)/andfind_x64
+	env GOOS=linux GOARCH=amd64 go build -o $(BUILD_FOLDER)/andfind_x86
 
 clean:
 	rm -rf $BUILD_FOLDER

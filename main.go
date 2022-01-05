@@ -10,13 +10,20 @@ import (
 )
 
 func main() {
-	err := filepath.Walk("/",
+    var target_path string
+    if len(os.Args) == 1 {
+        target_path = "/"
+    } else {
+        target_path = os.Args[1]
+    }
+
+	err := filepath.Walk(target_path,
 		func(path string, info os.FileInfo, err error) error {
 			if err == nil {
 				if !info.IsDir() {
 					fi, err2 := os.Stat(path)
 					if err2 != nil {
-						fmt.Println("oops")
+                        fmt.Println("Error:", err2)
 					} else {
 						mtime := fi.ModTime()
 						stat := fi.Sys().(*syscall.Stat_t)
